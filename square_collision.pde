@@ -13,7 +13,7 @@ PFont robotoRegular12;
 PFont robotoRegular16;
 PFont robotoRegular20;
 PFont robotoRegular24;
-PFont robotoRegular50;
+PFont robotoRegular35;
 
 // Color definitions
 color green1 = color(29,185,84); 
@@ -24,8 +24,8 @@ color white = color(255);
 color black = color(0);
 
 // Variable definitions
-int x = 250;
-int y = 250;
+int squareX = 250;
+int squareY = 250;
 int z = 0;
 
 void setup() {
@@ -41,7 +41,7 @@ void setup() {
   robotoRegular16 = createFont("fonts/Roboto-Regular.ttf", 16);
   robotoRegular20 = createFont("fonts/Roboto-Regular.ttf", 20);
   robotoRegular24 = createFont("fonts/Roboto-Regular.ttf", 24);
-  robotoRegular50 = createFont("fonts/Roboto-Regular.ttf", 50);
+  robotoRegular35 = createFont("fonts/Roboto-Regular.ttf", 35);
 }
 
 void draw() {
@@ -59,7 +59,7 @@ void draw() {
   int fontSize16 = 16;
   int fontSize20 = 20;
   int fontSize24 = 24;
-  int fontSize50 = 50;
+  int fontSize35 = 35;
 
   // Draws card/working area separation line
   int cardAreaWidth = 200;
@@ -109,47 +109,57 @@ void draw() {
   textFont(robotoRegular12, fontSize12);
   text(cardSubTitle, margin * 2, statusBarHeight + topAppBarHeight + margin + (padding28 * 2));
 
+  // Writes card number variable
+  String squareCoordinates = squareX + ", " + squareY;
+  textFont(robotoRegular35, fontSize35);
+  text(squareCoordinates, margin * 2, statusBarHeight + topAppBarHeight + margin + (padding28 * 5));
+
+    // Writes card number variable subtitle
+  String cardNumVArSub = "Square coordinates (x, y)";
+  textFont(robotoRegular12, fontSize12);
+  text(cardNumVArSub, margin * 2, statusBarHeight + topAppBarHeight + margin + (padding28 * 6));
+
   rectMode(CENTER);
 
   stroke(0);
   strokeWeight(2);
   rect(mouseX,mouseY,50,50);
-  rect(x,y,50,50);
-  if(mouseY+25 <= y-25) {
+  rect(squareX,squareY,50,50);
+  if(mouseY+25 <= squareY-25) {
     z = 1; //Up
   }
-  if(mouseX-25 >= x+25) {
+  if(mouseX-25 >= squareX+25) {
     z = 2; //Right
   }
-  if(mouseY-25 >= y+25) {
+  if(mouseY-25 >= squareY+25) {
     z = 3; //Down
   }
-  if(mouseX+25 <= x-25) {
+  if(mouseX+25 <= squareX-25) {
     z = 4; //Left
   }
   
   switch(z) {
   case 1:
-    if((mouseX+25 >= x-25)&&(mouseX-25 <= x+25)&&(mouseY+25 >= y-25)) {
-      y++;
+    if((mouseX+25 >= squareX-25)&&(mouseX-25 <= squareX+25)&&(mouseY+25 >= squareY-25)) {
+      squareY++;
     }
     break;
   case 2:
-    if((mouseY+25 >= y-25)&&(mouseY-25 <= y+25)&&(mouseX-25 <= x+25)) {
-      x--;
+    if((mouseY+25 >= squareY-25)&&(mouseY-25 <= squareY+25)&&(mouseX-25 <= squareX+25)) {
+      squareX--;
     }
     break;
   case 3:
-    if((mouseX+25 >= x-25)&&(mouseX-25 <= x+25)&&(mouseY-25 <= y+25)) {
-      y--;
+    if((mouseX+25 >= squareX-25)&&(mouseX-25 <= squareX+25)&&(mouseY-25 <=squareX+25)) {
+      squareY--;
     }
     break;
   case 4:
-    if((mouseY+25 >= y-25)&&(mouseY-25 <= y+25)&&(mouseX+25 >= x-25)) {
-      x++;
+    if((mouseY+25 >= squareY-25)&&(mouseY-25 <= squareY+25)&&(mouseX+25 >= squareX-25)) {
+      squareX++;
     }
     break;
   default:
-    y=y;
+    squareY=squareY;
   }
 }
