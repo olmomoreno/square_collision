@@ -42,8 +42,6 @@ void setup() {
   robotoRegular20 = createFont("fonts/Roboto-Regular.ttf", 20);
   robotoRegular24 = createFont("fonts/Roboto-Regular.ttf", 24);
   robotoRegular50 = createFont("fonts/Roboto-Regular.ttf", 50);
-
-  rectMode(CENTER);
 }
 
 void draw() {
@@ -70,6 +68,7 @@ void draw() {
   line(cardAreaWidth, 0, cardAreaWidth, height);
 
   // Draws Top App Bar
+  rectMode(CORNER);
   noStroke();
   fill(gray1);
   rect(0, statusBarHeight, cardAreaWidth, topAppBarHeight);
@@ -110,7 +109,7 @@ void draw() {
   textFont(robotoRegular12, fontSize12);
   text(cardSubTitle, margin * 2, statusBarHeight + topAppBarHeight + margin + (padding28 * 2));
 
-  
+  rectMode(CENTER);
 
   stroke(0);
   strokeWeight(2);
