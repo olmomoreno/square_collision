@@ -1,12 +1,55 @@
+/*****************************************************************
+**  SCENE: This scene design consist of 1 interactive element,  **
+**  it displays two green squares, one collides the other using **
+**  the mouse. If the square goes off the limits, press the     **
+**  reset button in the card control area.                      **
+*****************************************************************/
+
+//Images
+PImage rocketIcon;
+
+// Sketch's fonts
+PFont robotoRegular12;
+PFont robotoRegular16;
+PFont robotoRegular20;
+PFont robotoRegular24;
+PFont robotoRegular50;
+
+// Color definitions
+color green1 = color(29,185,84); 
+color green2 = color(35, 124, 102); 
+color gray1 = color(33, 33, 33);
+color gray2 = color(83, 83, 83);
+color white = color(255);
+color black = color(0);
+
+// Variable definitions
 int x = 250;
 int y = 250;
 int z = 0;
+
 void setup() {
-  size(500,500);
+  
+  // Processing window size
+  size(600, 400);
+
+  // Loads image
+  rocketIcon = loadImage("images/rocket_launch_24dp_FFFFFF.png");
+
+  // Creates font
+  robotoRegular12 = createFont("fonts/Roboto-Regular.ttf", 12);
+  robotoRegular16 = createFont("fonts/Roboto-Regular.ttf", 16);
+  robotoRegular20 = createFont("fonts/Roboto-Regular.ttf", 20);
+  robotoRegular24 = createFont("fonts/Roboto-Regular.ttf", 24);
+  robotoRegular50 = createFont("fonts/Roboto-Regular.ttf", 50);
+
   rectMode(CENTER);
 }
+
 void draw() {
-  background(255);
+
+  background(black);
+
   stroke(0);
   strokeWeight(2);
   rect(mouseX,mouseY,50,50);
