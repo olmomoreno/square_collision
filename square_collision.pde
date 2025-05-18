@@ -26,7 +26,7 @@ color white = color(255);
 color black = color(0);
 
 // Variable definitions
-int squareX = 250;
+int squareX = 300;
 int squareY = 250;
 int mouseSquareX = 250;
 int mouseSquareY = 50;
@@ -180,44 +180,31 @@ void draw() {
   fill(gray1);
   rect(mouseSquareX, mouseSquareY, squareSize, squareSize);
 
+  
+
+  // if(mouseY+25 <= squareY-25) {
+  //   z = 1; //Up
+  // }
+  // if(mouseX-25 >= squareX+25) {
+  //   z = 2; //Right
+  // }
+  // if(mouseY-25 >= squareY+25) {
+  //   z = 3; //Down
+  // }
+  // if(mouseX+25 <= squareX-25) {
+  //   z = 4; //Left
+  // }
+  
+  // Checks mouse left vs square right collision
+  if((mouseSquareX + (squareSize/2) >= squareX - (squareSize/2)) &&
+     (mouseSquareX - (squareSize/2) <= squareX + (squareSize/2)) &&
+     (mouseSquareY + (squareSize/2) >= squareY - (squareSize/2)) &&
+     (mouseSquareY - (squareSize/2) <= squareY + (squareSize/2))){
+    squareX++;
+  }
+   
+
   // Draws square to collide
   fill(green2);
-  rect(squareX,squareY,50,50);
-  if(mouseY+25 <= squareY-25) {
-    z = 1; //Up
-  }
-  if(mouseX-25 >= squareX+25) {
-    z = 2; //Right
-  }
-  if(mouseY-25 >= squareY+25) {
-    z = 3; //Down
-  }
-  if(mouseX+25 <= squareX-25) {
-    z = 4; //Left
-  }
-  
-  switch(z) {
-  case 1:
-    if((mouseX+25 >= squareX-25)&&(mouseX-25 <= squareX+25)&&(mouseY+25 >= squareY-25)) {
-      squareY++;
-    }
-    break;
-  case 2:
-    if((mouseY+25 >= squareY-25)&&(mouseY-25 <= squareY+25)&&(mouseX-25 <= squareX+25)) {
-      squareX--;
-    }
-    break;
-  case 3:
-    if((mouseX+25 >= squareX-25)&&(mouseX-25 <= squareX+25)&&(mouseY-25 <=squareX+25)) {
-      squareY--;
-    }
-    break;
-  case 4:
-    if((mouseY+25 >= squareY-25)&&(mouseY-25 <= squareY+25)&&(mouseX+25 >= squareX-25)) {
-      squareX++;
-    }
-    break;
-  default:
-    squareY=squareY;
-  }
+  rect(squareX, squareY, squareSize, squareSize);
 }
