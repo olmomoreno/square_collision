@@ -18,6 +18,7 @@ PFont robotoRegular35;
 // Color definitions
 color green1 = color(29,185,84); 
 color green2 = color(35, 124, 102); 
+color green3 = color(6, 64, 43);
 color gray1 = color(33, 33, 33);
 color gray2 = color(83, 83, 83);
 color white = color(255);
@@ -79,6 +80,41 @@ void draw() {
   fill(gray2);
   rect(margin, statusBarHeight + topAppBarHeight + margin, cardWidth, height - statusBarHeight - topAppBarHeight - (margin * 2), roundCorners);
 
+  // Draws card button
+  int buttonWidth = 80;
+  int buttonHeight = 30;
+  int buttonOffsetX = (cardWidth - (margin * 2) - buttonWidth)/2;
+  roundCorners = 10;
+  strokeWeight(1);
+  stroke(white);
+  fill(green1);
+  rect((margin * 2) + buttonOffsetX, statusBarHeight + topAppBarHeight + margin + (padding28 * 8) - (buttonHeight/2), buttonWidth, buttonHeight, roundCorners);
+
+  
+/*
+  // Checks if mouse is over slider's button
+  if(locked == true){ // Permit when mouse is pressed
+
+    if((mouseY >= statusBarHeight + topAppBarHeight + margin + (padding28 * 8) - (circleSize/2)) && // Is the mouse over top half of slider button?
+       (mouseY <= statusBarHeight + topAppBarHeight + margin + (padding28 * 8) + (circleSize/2))){  // Is the mouse over bottom half of slider button?
+
+      if((mouseX > (margin * 2)) && (mouseX < cardWidth - circleSize)){ // Is the mouse over the slider line?
+        sliderButtonX = mouseX;
+        float sldrX = map(sliderButtonX, margin * 2, cardWidth - circleSize, 1, 21);
+        speedValue = int(sldrX);
+      }
+    }
+  }
+ 
+  circle(sliderButtonX + (circleSize/2), statusBarHeight + topAppBarHeight + margin + (padding28 * 8) + (circleSize/32), circleSize);
+*/
+
+  // Square variables
+  int squareSize = 50;
+  int squareY = height/2 - squareSize/2;
+  
+  // Controls square's bounce
+
   // Draws status bar image
   int iconSize = 16;
   int iconOffset = 4;
@@ -118,6 +154,11 @@ void draw() {
   String cardNumVArSub = "Square coordinates (x, y)";
   textFont(robotoRegular12, fontSize12);
   text(cardNumVArSub, margin * 2, statusBarHeight + topAppBarHeight + margin + (padding28 * 6));
+
+  // Writes card button text
+  String cardButtonTexy = "RESET";
+  textFont(robotoRegular16, fontSize16);
+  text(cardNumVArSub, (margin * 2) + buttonOffsetX, statusBarHeight + topAppBarHeight + margin + (padding28 * 8) - (buttonHeight/2));
 
   rectMode(CENTER);
 
