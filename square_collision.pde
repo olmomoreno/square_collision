@@ -28,6 +28,8 @@ color black = color(0);
 // Variable definitions
 int squareX = 250;
 int squareY = 250;
+int mouseSquareX = 250;
+int mouseSquareY = 50;
 int z = 0;
 
 void setup() {
@@ -111,11 +113,6 @@ void draw() {
   circle(sliderButtonX + (circleSize/2), statusBarHeight + topAppBarHeight + margin + (padding28 * 8) + (circleSize/32), circleSize);
 */
 
-  // Square variables
-  int squareSize = 50;
-  int squareY = height/2 - squareSize/2;
-  
-  // Controls square's bounce
 
   // Draws status bar image
   int iconSize = 16;
@@ -164,11 +161,27 @@ void draw() {
   textFont(robotoBold16, fontSize16);
   text(cardButtonText, (margin * 2) + buttonOffsetX + cboX, statusBarHeight + topAppBarHeight + margin + (padding28 * 8) - (buttonHeight/2) + cboY);
 
+  // Square variables
+  int squareSize = 50;
+  int squareY = height/2 - squareSize/2;
   rectMode(CENTER);
 
-  stroke(0);
-  strokeWeight(2);
-  rect(mouseX,mouseY,50,50);
+  // Checks if mouse is over animation area
+  if(mouseX > cardAreaWidth + (squareSize/2)){
+    mouseSquareX = mouseX;
+    mouseSquareY = mouseY;
+  }
+  else{
+    mouseSquareX = mouseSquareX;
+    mouseSquareY = mouseSquareY;
+  }
+  
+  // Draws mouse follower square
+  fill(gray1);
+  rect(mouseSquareX, mouseSquareY, squareSize, squareSize);
+
+  // Draws square to collide
+  fill(green2);
   rect(squareX,squareY,50,50);
   if(mouseY+25 <= squareY-25) {
     z = 1; //Up
