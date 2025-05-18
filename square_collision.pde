@@ -14,6 +14,7 @@ PFont robotoRegular16;
 PFont robotoRegular20;
 PFont robotoRegular24;
 PFont robotoRegular35;
+PFont robotoBold16;
 
 // Color definitions
 color green1 = color(29,185,84); 
@@ -43,6 +44,7 @@ void setup() {
   robotoRegular20 = createFont("fonts/Roboto-Regular.ttf", 20);
   robotoRegular24 = createFont("fonts/Roboto-Regular.ttf", 24);
   robotoRegular35 = createFont("fonts/Roboto-Regular.ttf", 35);
+  robotoBold16 = createFont("fonts/Roboto-Bold.ttf", 16);
 }
 
 void draw() {
@@ -156,9 +158,11 @@ void draw() {
   text(cardNumVArSub, margin * 2, statusBarHeight + topAppBarHeight + margin + (padding28 * 6));
 
   // Writes card button text
-  String cardButtonTexy = "RESET";
-  textFont(robotoRegular16, fontSize16);
-  text(cardNumVArSub, (margin * 2) + buttonOffsetX, statusBarHeight + topAppBarHeight + margin + (padding28 * 8) - (buttonHeight/2));
+  int cboX = 17;
+  int cboY = 22;
+  String cardButtonText = "RESET";
+  textFont(robotoBold16, fontSize16);
+  text(cardButtonText, (margin * 2) + buttonOffsetX + cboX, statusBarHeight + topAppBarHeight + margin + (padding28 * 8) - (buttonHeight/2) + cboY);
 
   rectMode(CENTER);
 
