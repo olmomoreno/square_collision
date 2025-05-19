@@ -26,7 +26,7 @@ color white = color(255);
 color black = color(0);
 
 // Variable definitions
-int squareX = 300;
+int squareX = 350;
 int squareY = 250;
 int mouseSquareX = 250;
 int mouseSquareY = 50;
@@ -217,7 +217,12 @@ void draw() {
   rect(squareX, squareY, squareSize, squareSize);
 }
 
-// Interruption when mouse pressed event
+// Interruption when mouse pressed
 void mousePressed() {
   locked = true;
+}
+
+// Interruption when mouse released
+void mouseReleased() {
+  locked = false;
 }
