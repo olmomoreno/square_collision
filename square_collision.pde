@@ -30,7 +30,7 @@ int squareX = 300;
 int squareY = 250;
 int mouseSquareX = 250;
 int mouseSquareY = 50;
-int z = 0;
+boolean locked = false;
 
 void setup() {
   
@@ -95,23 +95,23 @@ void draw() {
   rect((margin * 2) + buttonOffsetX, statusBarHeight + topAppBarHeight + margin + (padding28 * 8) - (buttonHeight/2), buttonWidth, buttonHeight, roundCorners);
 
   
-/*
-  // Checks if mouse is over slider's button
+
+  // Checks if mouse is over card's button
   if(locked == true){ // Permit when mouse is pressed
 
-    if((mouseY >= statusBarHeight + topAppBarHeight + margin + (padding28 * 8) - (circleSize/2)) && // Is the mouse over top half of slider button?
-       (mouseY <= statusBarHeight + topAppBarHeight + margin + (padding28 * 8) + (circleSize/2))){  // Is the mouse over bottom half of slider button?
+    if((mouseY >= statusBarHeight + topAppBarHeight + margin + (padding28 * 8) - (buttonHeight/2)) && // Is the mouse over top half of card's button?
+       (mouseY <= statusBarHeight + topAppBarHeight + margin + (padding28 * 8) + (buttonHeight/2))){  // Is the mouse over bottom half of card's button?
 
-      if((mouseX > (margin * 2)) && (mouseX < cardWidth - circleSize)){ // Is the mouse over the slider line?
-        sliderButtonX = mouseX;
-        float sldrX = map(sliderButtonX, margin * 2, cardWidth - circleSize, 1, 21);
-        speedValue = int(sldrX);
+      if((mouseX > (margin * 2)  + buttonOffsetX) && (mouseX < (margin * 2)  + buttonOffsetX + buttonWidth)){ // Is the mouse over the card's button?
+        squareX = 300;
+        squareY = 250;
+        locked = false;
       }
     }
   }
  
-  circle(sliderButtonX + (circleSize/2), statusBarHeight + topAppBarHeight + margin + (padding28 * 8) + (circleSize/32), circleSize);
-*/
+  //circle(sliderButtonX + (circleSize/2), statusBarHeight + topAppBarHeight + margin + (padding28 * 8) + (circleSize/32), circleSize);
+
 
 
   // Draws status bar image
@@ -200,11 +200,24 @@ void draw() {
      (mouseSquareX - (squareSize/2) <= squareX + (squareSize/2)) &&
      (mouseSquareY + (squareSize/2) >= squareY - (squareSize/2)) &&
      (mouseSquareY - (squareSize/2) <= squareY + (squareSize/2))){
-    squareX++;
+    squareX = mouseSquareX + squareSize;
+  }
+
+  // Checks mouse right vs square left collision
+  if((mouseSquareX - (squareSize/2) <= squareX + (squareSize/2)) &&
+     (mouseSquareX + (squareSize/2) >= squareX - (squareSize/2)) &&
+     (mouseSquareY + (squareSize/2) >= squareY - (squareSize/2)) &&
+     (mouseSquareY - (squareSize/2) <= squareY + (squareSize/2))){
+    squareX = mouseSquareX - squareSize;
   }
    
 
   // Draws square to collide
   fill(green2);
   rect(squareX, squareY, squareSize, squareSize);
+}
+
+// Interruption when mouse pressed event
+void mousePressed() {
+  locked = true;
 }
