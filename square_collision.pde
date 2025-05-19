@@ -91,11 +91,17 @@ void draw() {
   roundCorners = 10;
   strokeWeight(1);
   stroke(white);
-  fill(green1);
+
+  if(locked == false){
+    fill(green1);
+  }
+  else{
+    fill(green3);
+  }
+
   rect((margin * 2) + buttonOffsetX, statusBarHeight + topAppBarHeight + margin + (padding28 * 8) - (buttonHeight/2), buttonWidth, buttonHeight, roundCorners);
 
   
-
   // Checks if mouse is over card's button
   if(locked == true){ // Permit when mouse is pressed
 
@@ -105,13 +111,10 @@ void draw() {
       if((mouseX > (margin * 2)  + buttonOffsetX) && (mouseX < (margin * 2)  + buttonOffsetX + buttonWidth)){ // Is the mouse over the card's button?
         squareX = 300;
         squareY = 250;
-        locked = false;
+        //locked = false;
       }
     }
   }
- 
-  //circle(sliderButtonX + (circleSize/2), statusBarHeight + topAppBarHeight + margin + (padding28 * 8) + (circleSize/32), circleSize);
-
 
 
   // Draws status bar image
@@ -180,21 +183,7 @@ void draw() {
   fill(gray1);
   rect(mouseSquareX, mouseSquareY, squareSize, squareSize);
 
-  
 
-  // if(mouseY+25 <= squareY-25) {
-  //   z = 1; //Up
-  // }
-  // if(mouseX-25 >= squareX+25) {
-  //   z = 2; //Right
-  // }
-  // if(mouseY-25 >= squareY+25) {
-  //   z = 3; //Down
-  // }
-  // if(mouseX+25 <= squareX-25) {
-  //   z = 4; //Left
-  // }
-  
   // Checks mouse left vs square right collision
   if((mouseSquareX + (squareSize/2) >= squareX - (squareSize/2)) &&
      (mouseSquareX - (squareSize/2) <= squareX + (squareSize/2)) &&
