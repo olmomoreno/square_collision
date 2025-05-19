@@ -92,7 +92,7 @@ void draw() {
   strokeWeight(1);
   stroke(white);
 
-  if(locked == false){
+  if(locked == false){ // Changes button color if pressed
     fill(green1);
   }
   else{
@@ -108,10 +108,10 @@ void draw() {
     if((mouseY >= statusBarHeight + topAppBarHeight + margin + (padding28 * 8) - (buttonHeight/2)) && // Is the mouse over top half of card's button?
        (mouseY <= statusBarHeight + topAppBarHeight + margin + (padding28 * 8) + (buttonHeight/2))){  // Is the mouse over bottom half of card's button?
 
-      if((mouseX > (margin * 2)  + buttonOffsetX) && (mouseX < (margin * 2)  + buttonOffsetX + buttonWidth)){ // Is the mouse over the card's button?
+      if((mouseX > (margin * 2)  + buttonOffsetX) && 
+         (mouseX < (margin * 2)  + buttonOffsetX + buttonWidth)){ // Is the mouse over the card's button?
         squareX = 300;
         squareY = 250;
-        //locked = false;
       }
     }
   }
